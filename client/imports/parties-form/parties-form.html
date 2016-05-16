@@ -1,0 +1,37 @@
+<div *ngIf="!user">Please, log in to change party</div>
+<form class="col-xs-12" 
+	  [ngFormModel]="partiesForm" 
+	  #f="ngForm"
+	  (submit)="addParty(f.value)">
+
+
+	<div class="control-group">
+		<label>Name</label>
+		<input type="text" class="form-control" ngControl="name">
+	</div>
+
+
+	<div class="control-group">
+		<label>Description</label>
+		<input type="text" class="form-control" ngControl="description">
+	</div>
+
+
+	<div class="control-group">
+		<label>Location</label>
+		<input type="text" class="form-control" ngControl="location">
+	</div>
+
+
+	<div class="control-group">
+		<label>Public</label>
+		<input type="checkbox" ngControl="public">
+	</div>
+
+
+	<div class="col-xs-12 std-pad">
+		<button class="pull-right">
+			Add
+		</button>
+	</div>
+</form>
