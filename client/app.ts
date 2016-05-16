@@ -1,18 +1,10 @@
-// Core
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
-import {Meteor} from 'meteor/meteor';
-import {Component, provide} from '@angular/core';
+import {Component} from '@angular/core';
+import {Dashboard} from './imports/dashboard/dashboard';
+import {MembersList} from './imports/my-team/my-team';
 import {bootstrap} from 'angular2-meteor-auto-bootstrap';
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
-import {Mongo} from 'meteor/mongo';
-import {APP_BASE_HREF} from '@angular/common';
-
-// Application modules
-import {PartiesForm} from './imports/parties-form/parties-form.ts';	
-import {PartiesList} from './imports/parties-list/parties-list.ts';
-import {PartyDetails} from './imports/party-details/party-details.ts';
-import {Parties} from '../collections/parties.ts';
 
 @Component({
 	selector: 'app',
@@ -20,22 +12,16 @@ import {Parties} from '../collections/parties.ts';
 	directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-	{ path: '/', as: 'PartiesList', component: PartiesList },
-	{ path: '/party/:partyId', as: 'PartyDetails', component: PartyDetails },
+	{ path: '/', as: 'Dashboard', component: Dashboard },
+	{ path: '/:userName/home', as: 'Dashboard', component: Dashboard },
+	{ path: '/:userName/my-team', as: 'MembersList', component: MembersList },
+	{ path: '/:userName/profile', as: 'PersonalProfile', component: PersonalProfile },
+	// { path: '/my-team/add-member', as: 'MemberForm', component: MemberForm },
+	// { path: '/member/:memberId', as: 'MemberDetails', component: MemberDetails },
+	// { path: '/projects', as: 'ProjectsList', component: ProjectsList },
+	// { path: '/proejct/:proejectId', as: 'ProjectDetails', component: ProjectDetails },
 ])
 
-class Socially {
-	parties: Mongo.Cursor<Party>;
+class AnyTeam {}
 
-	constructor() {
-		Meteor.subscribe('parties', function() {
-			this.parties = Parties.find();
-		})
-	}
-
-	removeParty(party) {
-		Parties.remove(party._id);
-	}
-}
-
-bootstrap(Socially, [ROUTER_PROVIDERS]);
+bootstrap(AnyTeam, [ROUTER_PROVIDERS]);
