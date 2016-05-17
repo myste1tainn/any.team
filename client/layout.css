@@ -1,1 +1,173 @@
-/Users/Myste1tainn/Dropbox/Boilerplates/scripts/css/layout.css
+/**
+*
+*
+*		Text
+*
+*/
+.text-xxs			{ font-size: 0.7em; font-weight: 200; }
+.text-xs			{ font-size: 0.8em; font-weight: 200; }
+.text-s				{ font-size: 0.9em; font-weight: 200; }
+.text-m				{ font-size: 1.0em; font-weight: 200; }
+.text-l				{ font-size: 1.2em; font-weight: 100;}
+.text-xl			{ font-size: 1.4em; font-weight: 100;}
+.text-xxl			{ font-size: 1.8em; font-weight: 100;}
+.text-xxxl			{ font-size: 2.5em; font-weight: 100;}
+
+html, body {
+	font-family: 'Helvetica Neue';
+	font-weight: 200;
+	font-size: 18px;
+	color: #555;
+	width: 100%; height: 100%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: 100;
+}
+strong {
+	font-weight: 200;
+}
+
+/**
+*
+*
+*		Sizing
+*
+*/
+.match-parent { width: 100%; height: 100%; }
+.full-height { height: 100%; background: red; }
+
+/**
+*
+*
+*		Padding
+*
+*/
+.small-pad 			{padding: 8px;}
+.small-pad-left 	{padding-left: 8px;}
+.small-pad-right 	{padding-right: 8px;}
+.small-pad-top 		{padding-top: 8px;}
+.small-pad-bottom 	{padding-bottom: 8px;}
+
+.std-pad 			{padding: 15px;}
+.std-pad-left 		{padding-left: 15px;}
+.std-pad-right 		{padding-right: 15px;}
+.std-pad-top 		{padding-top: 15px;}
+.std-pad-bottom 	{padding-bottom: 15px;}
+
+.large-pad 			{padding: 30px;}
+.large-pad-left 	{padding-left: 30px;}
+.large-pad-right 	{padding-right: 30px;}
+.large-pad-top 		{padding-top: 30px;}
+.large-pad-bottom 	{padding-bottom: 30px;}
+
+.xlarge-pad 		{padding: 60px;}
+.xlarge-pad-left 	{padding-left: 60px;}
+.xlarge-pad-right 	{padding-right: 60px;}
+.xlarge-pad-top 	{padding-top: 60px;}
+.xlarge-pad-bottom 	{padding-bottom: 60px;}
+
+/**
+*
+*
+*		Margin
+*
+*/
+.small-margin 			{margin: 8px;}
+.small-margin-left 		{margin-left: 8px;}
+.small-margin-right 	{margin-right: 8px;}
+.small-margin-top 		{margin-top: 8px;}
+.small-margin-bottom 	{margin-bottom: 8px;}
+
+.std-margin 			{margin: 15px;}
+.std-margin-left 		{margin-left: 15px;}
+.std-margin-right 		{margin-right: 15px;}
+.std-margin-top 		{margin-top: 15px;}
+.std-margin-bottom 		{margin-bottom: 15px;}
+
+.large-margin 			{margin: 30px;}
+.large-margin-left 		{margin-left: 30px;}
+.large-margin-right 	{margin-right: 30px;}
+.large-margin-top 		{margin-top: 30px;}
+.large-margin-bottom 	{margin-bottom: 30px;}
+
+.pull-up-1				{margin-top: -5%;}
+.pull-up-2				{margin-top: -10%;}
+.pull-up-3				{margin-top: -15%;}
+.pull-up-4				{margin-top: -20%;}
+.pull-down-1			{margin-bottom: -5%;}
+.pull-down-2			{margin-bottom: -10%;}
+.pull-down-3			{margin-bottom: -15%;}
+.pull-down-4			{margin-bottom: -20%;}
+
+/**
+*
+*
+*		Border
+*
+*/
+.border				{border: 1px solid #e5e5e5;}
+.border-left		{border-left: 1px solid #e5e5e5;}
+.border-right		{border-right: 1px solid #e5e5e5;}
+.border-top			{border-top: 1px solid #e5e5e5;}
+.border-bottom		{border-bottom: 1px solid #e5e5e5;}
+
+
+/**
+*
+*
+*		Layouting
+*
+*/
+.container-flex {
+	display: flex;
+}
+
+.container-flex.center,
+.container-flex.center * {
+	align-items: center;
+	text-align: center;
+	margin: auto;
+}
+
+.shrinked { transform: scale(0); }
+.invisible { opacity: 0; }
+.animate { transition: all 0.3s ease; }
+.animate-fast { transition: all 0.2s ease; }
+.animate-slow { transition: all 0.6s ease; }
+.move-up { transform: translateY(-50%); }
+.move-down { transform: translateY(50%); }
+.move-left { transform: translateX(-50%); }
+.move-right { transform: translateX(50%); }
+.move-up-1in2 { transform: translateY(-25%); }
+.move-down-1in2 { transform: translateY(25%); }
+.move-left-1in2 { transform: translateX(-25%); }
+.move-right-1in2 { transform: translateX(25%); }
+.move-up-1in4 { transform: translateY(-12%); }
+.move-down-1in4 { transform: translateY(12%); }
+.move-left-1in4 { transform: translateX(-12%); }
+.move-right-1in4 { transform: translateX(12%); }
+
+/**
+*
+*
+*		Default theme
+*
+*/
+button {
+	outline: none;
+	border: none;
+	border-radius: 4px;
+}
+
+input {
+	outline: none;
+	border: none;
+	background-color: transparent;
+	border-bottom: 1px solid #e5e5e5;
+	transition: border 0.5s ease;
+}
+
+input:focus {
+	border-bottom: 1px solid #555;
+}

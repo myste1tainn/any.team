@@ -1,1 +1,20 @@
-/Users/Myste1tainn/Dropbox/Boilerplates/scripts/css/color.css
+/*
+* Color as in color theory
+* primary		->		60%
+* secondary		->		20%
+* tertiary		->		10%
+* accent-1		->		 5%
+* accent-2		->		 5%
+*/
+
+.color-primary			{ color: #303030; }
+.color-secondary		{ color: #999999; }
+.color-tertiary			{ color: #DDDDDD; }
+.color-accent-1			{ color: #E87D2B; }
+/*.color-accent-2			{ color: #555; }*/
+
+.bg-color-primary		{ background-color: #303030; }
+.bg-color-secondary		{ background-color: #999999; }
+.bg-color-tertiary		{ background-color: #DDDDDD; }
+.bg-color-accent-1		{ background-color: #E87D2B; }
+/*.bg-color-accent-2		{ color: #555; }*/
