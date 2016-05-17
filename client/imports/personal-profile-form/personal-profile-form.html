@@ -3,7 +3,8 @@
 		(submit)="saveProfile(f.value)"
 		class="match-parent container-flex center bg-color-primary">
 
-	<div class="xlarge-pad-bottom">
+	<div class="xlarge-pad-bottom animate-slow" 
+		 [ngClass]="{'move-up-1in4 invisible':profileSaved}">
 		<h1 class="text-xxxl">HELLO</h1>
 		<h2>Welcome to <strong>Any.<span class="color-accent-1">Team</span></strong>!</h2>
 		<br />
@@ -11,7 +12,9 @@
 		<p>what's your name?</p>
 		<input class="text-xxl" type="text" ngControl="name" placeholder="John Wick">
 		<div class="std-pad">
-			<button class="animate-fast" (click)="show()" [ngClass]="{shrinked:!nameHasValue}">ENTER</button>
+			<button class="animate-fast" 
+					(click)="show()" 
+					[ngClass]="{'shrinked':!nameHasValue}">TEAM UP!</button>
 		</div>
 	</div>
 

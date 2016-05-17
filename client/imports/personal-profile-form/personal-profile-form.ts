@@ -11,13 +11,15 @@ import {InjectUser} from 'angular2-meteor-accounts-ui';
 @InjectUser()
 export class PersonalProfileForm extends MeteorComponent {
 	user: Meteor.User;
+	profile: Person;
 	personalProfileForm: ControlGroup;
 	nameHasValue: boolean;
+	profileSaved: boolean
 
 	constructor() {
 		super();
 		let fb = new FormBuilder();
-		
+
 		this.personalProfileForm = fb.group({
 			name: ['']
 		});
@@ -25,17 +27,38 @@ export class PersonalProfileForm extends MeteorComponent {
 		this.personalProfileForm.valueChanges.subscribe(data => {
 			this.nameHasValue = (data.name != '')
 		});
+
+		this.subscribe('persons', () => {
+			this.profile = Persons.findOne({ user: this.user._id });
+			
+			if (this.profile) {
+				this.personalProfileForm.controls['name'].updateValue(this.profile.name);
+			}
+
+		}, true)
 	}
 
 	saveProfile(profile) {
-		Persons.update(profile._id, {
-			$set: {
-				name: profile.name
-			}
-		})
+		this.profileSaved = true;
+		if (this.profile) {
+			Persons.update(this.profile._id, {
+				$set: {
+					name: profile.name,
+				}
+			})
+		} else {
+			Persons.insert({
+				name: profile.name,
+				user: this.user._id
+			})
+		}
+	}
+
+	showAcitivityIndicator() {
+
 	}
 
 	show() {
-		console.log(this.personalProfileForm.controls['name']._value);
+		
 	}
 }
