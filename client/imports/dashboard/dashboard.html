@@ -1,7 +1,11 @@
 <header class="col-xs-12 std-pad">
 	<h1>Dashboard</h1>
+	<login-buttons></login-buttons>
 </header>
 
 <div class="col-xs-12 std-pad">
-	<a [routerLink]="['/MembersList', {}]">My Team</a>
+<ul *ngIf="user">
+	<li><a [routerLink]="['/MembersList', {userName:userName()}]">My Team</a></li>
+	<li><a [routerLink]="['/PersonalProfileForm', {userName:userName()}]">Profile Form</a></li>
+</ul>
 </div>

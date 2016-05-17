@@ -1,0 +1,15 @@
+html, body, body * {
+	color: #DDDDDD;
+}
+
+button {
+	color: #303030;
+}
+
+input {
+	border-bottom: 1px solid #555 !important;
+}
+
+input:focus {
+	border-bottom: 1px solid #E87D2B !important;
+}
