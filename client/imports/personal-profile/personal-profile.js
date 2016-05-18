@@ -22,8 +22,8 @@ var PersonalProfile = (function (_super) {
     function PersonalProfile(params) {
         _super.call(this);
         var personId = params.get('personId');
-        this.subscribe('persons', function () {
-            this.person = Persons.findOne(personId);
+        this.subscribe('profiles', function () {
+            this.person = Profiles.findOne(personId);
         }, true);
     }
     PersonalProfile = __decorate([

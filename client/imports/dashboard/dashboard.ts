@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {Component} from '@angular/core';
 import {MeteorComponent} from 'angular2-meteor';
 import {RouterLink} from '@angular/router-deprecated';
-import {Persons} from '../../../collections/persons';
+import {Profiles} from '../../../collections/profiles';
 import {LoginButtons, InjectUser} from 'angular2-meteor-accounts-ui';
 
 @Component({
@@ -19,7 +19,7 @@ export class Dashboard extends MeteorComponent {
 		super();
 
 		if (this.user) {
-			this.person = Persons.findOne({account: this.user._id});
+			this.person = Profiles.findOne({account: this.user._id});
 		}
 	}
 

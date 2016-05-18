@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import {Component} from '@angular/core';
-import {Persons} from '../../../collections/persons';
+import {Profiles} from '../../../collections/profiles';
 import {RouteParams} from '@angular/router-deprecated';
 
 @Component({
@@ -14,7 +14,7 @@ export class PersonalProfile {
 	constructor(params: RouteParams) {
 		var personId = params.get('personId');
 
-		this.person = Persons.findOne(personId);
+		this.person = Profiles.findOne(personId);
 	}
 
 }
