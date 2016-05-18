@@ -1,3 +1,4 @@
+import {Meteor} from 'meteor/meteor';
 import {Component} from '@angular/core';
 import {MeteorComponent} from 'angular2-meteor';
 import {FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
@@ -8,10 +9,10 @@ import {InjectUser} from 'angular2-meteor-accounts-ui';
 	selector: 'Welcome',
 	templateUrl: 'client/imports/welcome/welcome.html'
 })
-@InjectUser()
+@InjectUser('')
 export class Welcome extends MeteorComponent {
 	user: Meteor.User;
-	profile: Person;
+	profile: Profile;
 	personalProfileForm: ControlGroup;
 	nameHasValue: boolean;
 	profileSaved: boolean;
