@@ -9,7 +9,7 @@ import {InjectUser} from 'angular2-meteor-accounts-ui';
 	selector: 'Welcome',
 	templateUrl: 'client/imports/welcome/welcome.html'
 })
-@InjectUser('')
+@InjectUser('user')
 export class Welcome extends MeteorComponent {
 	user: Meteor.User;
 	profile: Profile;
@@ -32,7 +32,6 @@ export class Welcome extends MeteorComponent {
 
 		this.subscribe('profiles', () => {
 			this.profile = Profiles.findOne({ user: this.user._id });
-			
 			if (this.profile) {
 				this.personalProfileForm.controls['name'].updateValue(this.profile.name);
 				this.profileExisted = true;

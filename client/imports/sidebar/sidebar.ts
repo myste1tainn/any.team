@@ -10,7 +10,7 @@ import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, RouterLink} from '@ang
 	templateUrl: 'client/imports/sidebar/sidebar.html',
 	directives: [ROUTER_DIRECTIVES]
 })
-@InjectUser('')
+@InjectUser('user')
 export class Sidebar extends MeteorComponent {
 	user: Meteor.User;
 	profile: Profile;
@@ -18,9 +18,11 @@ export class Sidebar extends MeteorComponent {
 	constructor() {
 		super();
 
-		if (this.user) {
-			this.profile = Profiles.findOne({account: this.user._id});
-		}
+		this.subscribe('profiles', () => {
+			if (this.user) {
+				this.profile = Profiles.findOne({account: this.user._id});
+			}
+		})
 	}
 
 	userName() {

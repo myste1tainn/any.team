@@ -18,3 +18,24 @@
 .bg-color-tertiary		{ background-color: #DDDDDD; }
 .bg-color-accent-1		{ background-color: #E87D2B; }
 /*.bg-color-accent-2		{ color: #555; }*/
+
+.theme-primary { 
+	background-color: #303030;
+	color: #DDDDDD;
+}
+.theme.secondary {
+	background-color: #999999;
+	color: #DDDDDD;
+}
+.theme-tetiary { 
+	background-color: #DDDDDD;
+	color: #303030;
+}
+.theme-accent-1 {
+	background-color: #E87D2B;
+	color: #DDDDDD;
+}
+/*.theme-accent-2 {
+	background-color: #E87D2B;
+	color: #DDDDDD;
+}*/

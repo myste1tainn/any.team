@@ -2,10 +2,3 @@
 	<h1 class="col-xs-8">Dashboard</h1>
 	<login-buttons class="col-xs-4 std-pad std-margin-top"></login-buttons>
 </header>
-
-<div class="col-xs-12 std-pad">
-<ul *ngIf="user">
-	<li><a [routerLink]="['/MembersList', {userName:userName()}]">My Team</a></li>
-	<li><a [routerLink]="['/PersonalProfileForm', {userName:userName()}]">Profile Form</a></li>
-</ul>
-</div>

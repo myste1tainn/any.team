@@ -3,6 +3,7 @@ html, body, body * {
 }
 
 button {
+	background-color: transparent;
 	color: #303030;
 }
 

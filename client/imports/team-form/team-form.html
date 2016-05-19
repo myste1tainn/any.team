@@ -1,0 +1,7 @@
+<form 	[(ngFormModel)]="form" #f="ngForm"
+		(submit)="addTeam(f.value)">
+	<input type="text" name="" ngControl="name">
+	<button>Submit</button>
+</form>
+
+<member-list></member-list>

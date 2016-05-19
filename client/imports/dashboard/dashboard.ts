@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {MeteorComponent} from 'angular2-meteor';
 import {Welcome} from '../welcome/welcome';
 import {Profiles} from '../../../collections/profiles';
-import {LoginButtons, InjectUser} from 'angular2-meteor-accounts-ui';
+import {LoginButtons, InjectUser, RequireUser} from 'angular2-meteor-accounts-ui';
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, RouterLink} from '@angular/router-deprecated';
 
 @Component({
@@ -11,7 +11,7 @@ import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, RouterLink} from '@ang
 	templateUrl: 'client/imports/dashboard/dashboard.html',
 	directives: [LoginButtons, RouterLink]
 })
-@InjectUser('')
+@InjectUser('user')
 export class Dashboard extends MeteorComponent {
 	user: Meteor.User;
 	profile: Profile;
