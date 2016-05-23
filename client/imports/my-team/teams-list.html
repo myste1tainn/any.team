@@ -1,0 +1,7 @@
+<div class="col-xs-12 std-pad">
+	<div *ngFor="let team of teams">
+		<div [routerLink]="['/MyTeam/ViewMembers', {teamId: team._id}]">
+			{{team.name}}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<span *ngIf="team">
+	<header class="col-xs-12 border-bottom">
+		<h1 class="pull-left">{{ team.name }}</h1>
+		<member-invite class="pull-right std-pad small-margin-top"></member-invite>
+	</header>
+	<div class="col-xs-12 std-pad">
+		<div class="col-xs-12 large-pad" *ngFor="let member of members">
+			<span>
+				{{ member.user.name || '-- User has no name --' }}
+			</span>
+			<span *ngIf="!member.requestAccepted">
+				request pending...
+			</span>
+			<span class="pull-right" (click)="removeMember(member)">
+				Remove
+			</span>
+		</div>
+	</div>
+</span>

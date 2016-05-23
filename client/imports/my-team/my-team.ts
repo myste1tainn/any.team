@@ -1,22 +1,23 @@
 import 'reflect-metadata';
-import {Component} 			from '@angular/core';
-import {MeteorComponent} 	from 'angular2-meteor';
+import {Meteor} 				from 'meteor/meteor';
+import {MeteorComponent} 		from 'angular2-meteor';
+import {Mongo}					from 'meteor/mongo';
+import {Component}				from '@angular/core';
 
 // Component
-import {MembersList}		from '../members-list/members-list';
-import {TeamForm} 			from '../team-form/team-form';
+import {TeamForm}				from '../team-form/team-form';
+import {MembersList}			from '../members-list/members-list';
 
 // Model
-import {Teams} 				from '../../../collections/teams';
-import {TeamMembers}		from '../../../collections/team-members';
+import {Teams} 					from '../../../collections/teams';
 
 import {ROUTER_DIRECTIVES, RouteConfig, RouteParams} from '@angular/router-deprecated';
 import {InjectUser, RequireUser} from 'angular2-meteor-accounts-ui'
 
 
 @Component({
-	selector: 'members-list',
-	templateUrl: 'client/imports/my-team/my-team.html',
+	selector: 'teams-list',
+	templateUrl: 'client/imports/my-team/teams-list.html',
 	directives: [ROUTER_DIRECTIVES]
 })
 @InjectUser('user')
@@ -39,12 +40,11 @@ export class TeamsList extends MeteorComponent {
 
 @Component({
 	selector: 'my-team',
-	template: '<router-outlet></router-outlet>',
+	templateUrl: 'client/imports/my-team/my-team.html',
 	directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-	{ path: '/', as: 'TeamsList', component: TeamsList, useAsDefault: true },
-	{ path: '/members', as: 'MembersList', component: MembersList },
-	{ path: '/add', as: 'TeamForm', component: TeamForm }
+	{ path: '/list', as: 'TeamsList', component: TeamsList, useAsDefault: true },
+	{ path: '/view/:teamId', as: 'ViewMembers', component: MembersList },
 ])
-export class MyTeam {}
+export class MyTeamComponent {}

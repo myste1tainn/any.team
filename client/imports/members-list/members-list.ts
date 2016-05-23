@@ -1,31 +1,49 @@
 import 'reflect-metadata';
-import {Component} 			from '@angular/core';
-import {MeteorComponent} 	from 'angular2-meteor';
-import {Teams} 				from '../../../collections/teams';
-import {TeamMembers}		from '../../../collections/team-members';
+import {Meteor} 				from 'meteor/meteor';
+import {MeteorComponent} 		from 'angular2-meteor';
+import {Mongo}					from 'meteor/mongo';
+import {Component} 				from '@angular/core';
+import {MemberInvite}	 		from '../member-invite/member-invite';
+import {Teams} 					from '../../../collections/teams';
+import {TeamMembers}			from '../../../collections/team-members';
+import {Profiles}				from '../../../collections/profiles';
 
-import {InjectUser, RequireUser} from 'angular2-meteor-accounts-ui'
+import {InjectUser, RequireUser} 			from 'angular2-meteor-accounts-ui'
+import {RouteParams, RouteConfig} 			from '@angular/router-deprecated';
+import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+
 
 @Component({
 	selector: 'members-list',
-	templateUrl: 'client/imports/my-team/my-team.html'
+	templateUrl: 'client/imports/members-list/members-list.html',
+	directives: [ROUTER_DIRECTIVES, MemberInvite]
 })
+
 @InjectUser('user')
-export class Members {}
 export class MembersList extends MeteorComponent {
 	user: Meteor.User;
+	team: Team;
 	members: Mongo.Cursor<TeamMember>;
+	showInvite: boolean;
 
 	constructor(private routeParams: RouteParams) {
-		console.log(this);
 		super();
 		let teamId = this.routeParams.get('teamId');
-		this.subscribe('teamsMembers', () => {
+
+		this.subscribe('teamMembers', () => {
 			this.members = TeamMembers.find({teamId: teamId});
-		}, true)
+		}, true);
+		
+		this.subscribe('teams', () => {
+			this.team = Teams.findOne(teamId);
+		}, true);
 	}
 
-	removeTeamMember(member: TeamMember) {
-		TeamMembers.remove({_id: member._id});
+	toggleShowInvite() {
+		this.showInvite = !this.showInvite;
+	}
+
+	removeMember(member: TeamMember) {
+		TeamMembers.remove({ _id: member._id });
 	}
 }

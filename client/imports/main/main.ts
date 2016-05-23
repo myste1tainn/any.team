@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Dashboard} from '../dashboard/dashboard';
 import {NewsFeed} from '../news-feed/news-feed';
 import {Sidebar} from '../sidebar/sidebar';
-import {MembersList} from '../my-team/my-team';
+import {MembersList} from '../members-list/members-list';
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
 
 

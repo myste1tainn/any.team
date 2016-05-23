@@ -1,11 +1,11 @@
 import {Meteor} from 'meteor/meteor';
-import {Profiles} from '../collections/profiles';
+import {TeamMembers} from '../collections/team-members';
 
-Meteor.publish('profiles', function() {
-	return Profiles.find();
+Meteor.publish('teamMembers', function() {
+	return TeamMembers.find();
 })
 
-Profiles.allow({
+TeamMembers.allow({
 	insert: function() {
 		return true;
 	},

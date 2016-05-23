@@ -9,7 +9,9 @@ import {Dashboard} 			from './imports/dashboard/dashboard';
 import {NewsFeed} 			from './imports/news-feed/news-feed';
 import {Sidebar} 			from './imports/sidebar/sidebar';
 import {Welcome} 			from './imports/welcome/welcome';
-import {MyTeam, TeamsList}	from './imports/my-team/my-team';
+import {MyTeamComponent}	from './imports/my-team/my-team';
+import {TeamForm}			from './imports/team-form/team-form';
+import {MembersList} 		from './imports/members-list/members-list';
 
 // Routing
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, RouterLink} from '@angular/router-deprecated';
@@ -22,7 +24,9 @@ import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, RouterLink} from '@ang
 @RouteConfig([
 	{ path: '/dashboard', as: 'Dashboard', component: Dashboard },
 	{ path: '/welcome', as: 'Welcome', component: Welcome },
-	{ path: '/my-team/...', as: 'MyTeam', component: MyTeam }
+	{ path: '/my-teams/...', as: 'MyTeam', component: MyTeamComponent },
+	{ path: '/add-team/...', as: 'AddTeam', component: TeamForm },
+	{ path: '/team/:teamId', as: 'ViewTeam', component: MembersList },
 	// { path: '/:userName/profile', as: 'PersonalProfile', component: PersonalProfile },
 	// { path: '/my-team/add-member', as: 'MemberForm', component: MemberForm },
 	// { path: '/member/:memberId', as: 'MemberDetails', component: MemberDetails },

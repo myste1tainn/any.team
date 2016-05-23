@@ -1,7 +1,16 @@
 <form 	[(ngFormModel)]="form" #f="ngForm"
 		(submit)="addTeam(f.value)">
-	<input type="text" name="" ngControl="name">
-	<button>Submit</button>
-</form>
 
-<member-list></member-list>
+	<div class="col-xs-12 border-bottom">
+		<h1 class="pull-left no-margin std-pad">Create Team</h1>
+
+		<button class="pull-right std-pad small-margin-top">Cancel</button>
+		<button type="submit" class="pull-right std-pad small-margin-top">Save</button>
+	</div>
+
+	<div class="col-xs-12 large-pad text-center">
+		<input class="text-center" type="text" ngControl="name" placeholder="Team name">
+	</div>
+
+	<router-outlet></router-outlet>
+</form>
