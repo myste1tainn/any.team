@@ -44,3 +44,11 @@ button {
 	/* Accent 1 color */
 	color: #E87D2B;
 }
+
+/*
+* General colors
+*/
+.destructive { background-color: #ff4444; }
+.text-destructive { color: #ff4444; }
+.friendly { background-color: #44ff44; }
+.text-friendly { color: #44ff44; }

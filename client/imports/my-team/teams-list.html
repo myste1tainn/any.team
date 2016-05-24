@@ -1,7 +1,23 @@
-<div class="col-xs-12 std-pad">
+<div class="col-xs-12 std-pad" *ngIf="!isSimple">
 	<div *ngFor="let team of teams">
-		<div [routerLink]="['/MyTeam/ViewMembers', {teamId: team._id}]">
-			{{team.name}}
+		<div class="col-xs-12 std-pad clickable container-flex v-center border-bottom" style="height: 100px"
+			 [routerLink]="['/ViewTeam', {teamId: team._id}]">
+			<span class="col-xs-6">{{team.name}}</span>
+			<span class="col-xs-2">{{team.memberCount || 0}}</span>
+			<span class="col-xs-3">
+				member-portrait-list
+			</span>
+			<button class="col-xs-1 fa fa-times-circle text-destructive">
+			</button>
 		</div>
 	</div>
 </div>
+
+<span *ngIf="isSimple">
+	<li *ngIf="team" *ngFor="let team of teams" class="small-pad large-pad-left">
+		<a [routerLink]="['/ViewTeam', {teamId: team._id}]">{{team.name}}</a>
+	</li>
+	<li class="small-pad large-pad-left">
+		<a [routerLink]="['/MyTeam', {}]">+ Add more...</a>
+	</li>
+</span>

@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import {Meteor} 				from 'meteor/meteor';
 import {MeteorComponent} 		from 'angular2-meteor';
 import {Mongo}					from 'meteor/mongo';
-import {Component}				from '@angular/core';
+import {Component,ElementRef}	from '@angular/core';
 
 // Component
 import {TeamForm}				from '../team-form/team-form';
@@ -14,7 +14,6 @@ import {Teams} 					from '../../../collections/teams';
 import {ROUTER_DIRECTIVES, RouteConfig, RouteParams} from '@angular/router-deprecated';
 import {InjectUser, RequireUser} from 'angular2-meteor-accounts-ui'
 
-
 @Component({
 	selector: 'teams-list',
 	templateUrl: 'client/imports/my-team/teams-list.html',
@@ -24,11 +23,21 @@ import {InjectUser, RequireUser} from 'angular2-meteor-accounts-ui'
 export class TeamsList extends MeteorComponent {
 	user: Meteor.User;
 	teams: Mongo.Cursor<Team>;
+	isSimple: boolean;
+	limit: integer;
 
-	constructor() {
+	constructor(el: ElementRef) {
 		super();
+
+		// Teams list may either be display in simple list or manageable list
+		let simple = el.nativeElement.attributes.simple;
+		this.isSimple = (simple) ? eval(simple.value) : false;
+
+		let limit = el.nativeElement.attributes.limit;
+		this.limit = (limit) ? eval(limit.value) : 10;
+
 		this.subscribe('teams', () => {
-			this.teams = Teams.find({owner: this.user._id});
+			this.teams = Teams.find({owner: this.user._id}, {limit: this.limit});
 		}, true)
 	}
 
