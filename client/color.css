@@ -42,13 +42,27 @@
 
 button {
 	/* Accent 1 color */
+	padding-top: 		5px;
+	padding-bottom: 	5px;
+	padding-left: 		18px;
+	padding-right: 		18px;
+	color: #DDDDDD;
+	background-color: #E87D2B;
+	transition: 0.2s all ease;
+}
+button:hover {
+	background-color: #F89D4B;
+}
+
+button.selected {
 	color: #E87D2B;
+	background-color: #FFF;
 }
 
 /*
 * General colors
 */
-.destructive { background-color: #ff4444; }
-.text-destructive { color: #ff4444; }
-.friendly { background-color: #44ff44; }
-.text-friendly { color: #44ff44; }
+.bg-destructive { background-color: #ff4444; }
+.destructive { color: #ff4444; }
+.bg-friendly { background-color: #44ff44; }
+.friendly { color: #44ff44; }

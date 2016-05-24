@@ -41,7 +41,7 @@ export class Welcome extends MeteorComponent {
 		Meteor.users.update(this.user._id, {
 			$set: {
 				name: profile.name,
-			}	
+			}
 		})
 	}
 
