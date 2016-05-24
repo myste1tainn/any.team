@@ -1,8 +1,9 @@
 html, body, body * {
-	color: #DDDDDD;
+	color: #303030;
 }
 
 button {
+	background-color: transparent;
 	color: #303030;
 }
 

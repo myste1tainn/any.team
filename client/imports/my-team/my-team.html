@@ -1,7 +1,9 @@
-<header class="col-xs-12 std-pad">
-	My Team
+<header class="col-xs-12 border-bottom">
+	<h1 class="pull-left">My Team</h1>
+	<button class="pull-right std-pad color-accent-1 text-xxl fa fa-plus-circle"
+			[routerLink]="['/AddTeam', {}]">
+		
+	</button>
 </header>
 
-<div class="col-xs-12 std-pad">
-	
-</div>
+<router-outlet></router-outlet>

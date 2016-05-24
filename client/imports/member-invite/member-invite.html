@@ -1,0 +1,14 @@
+<button (click)="toggleShowDialog()">
+	<span class="fa fa-plus-circle"></span>
+	Invite
+</button>
+<div *ngIf="showDialog" class="dialog cover-page container-flex center">
+	<div class="dialog-body">
+		<form [ngFormModel]="form"
+			  #f="ngForm"
+			  (submit)="invite(f.value)">
+			<input type="email" ngControl="email">
+			<button>Invite</button>
+		</form>
+	</div>
+</div>

@@ -19,6 +19,7 @@ html, body {
 	font-size: 18px;
 	color: #555;
 	width: 100%; height: 100%;
+	overflow: hidden;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -28,6 +29,10 @@ strong {
 	font-weight: 200;
 }
 
+.v-scrollable {
+	overflow-y: auto;
+}
+
 /**
 *
 *
@@ -35,7 +40,7 @@ strong {
 *
 */
 .match-parent { width: 100%; height: 100%; }
-.full-height { height: 100%; background: red; }
+.full-height { height: 100%; }
 
 /**
 *
@@ -43,6 +48,7 @@ strong {
 *		Padding
 *
 */
+.no-pad				{padding: 0px;}
 .small-pad 			{padding: 8px;}
 .small-pad-left 	{padding-left: 8px;}
 .small-pad-right 	{padding-right: 8px;}
@@ -54,6 +60,7 @@ strong {
 .std-pad-right 		{padding-right: 15px;}
 .std-pad-top 		{padding-top: 15px;}
 .std-pad-bottom 	{padding-bottom: 15px;}
+.std-pad-lr			{padding-left: 15px; padding-right: 15px;}
 
 .large-pad 			{padding: 30px;}
 .large-pad-left 	{padding-left: 30px;}
@@ -73,6 +80,7 @@ strong {
 *		Margin
 *
 */
+.no-margin				{margin: 0px;}
 .small-margin 			{margin: 8px;}
 .small-margin-left 		{margin-left: 8px;}
 .small-margin-right 	{margin-right: 8px;}
@@ -111,7 +119,9 @@ strong {
 .border-right		{border-right: 1px solid #e5e5e5;}
 .border-top			{border-top: 1px solid #e5e5e5;}
 .border-bottom		{border-bottom: 1px solid #e5e5e5;}
-
+.no-border,
+.no-border td
+{border: none !important;}
 
 /**
 *
@@ -128,6 +138,29 @@ strong {
 	align-items: center;
 	text-align: center;
 	margin: auto;
+}
+.container-flex.v-center {
+	align-items: center;
+}
+
+.dialog {
+	position: absolute;
+	top: 0; left: 0;
+}
+.dialog.cover-page { position: fixed; width: 100%; height: 100%; }
+.dialog::after {
+	content: ' ';
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index: 990;
+}
+.dialog .dialog-body {
+	background-color: white;
+	border-radius: 4px;
+	padding: 15px;
+	z-index: 999;
 }
 
 /**
@@ -164,3 +197,20 @@ input:focus {
 .invisible { opacity: 0; }
 .animate { transition: all 0.3s ease; }
 .animate-fast { transition: all 0.2s ease; }
+
+/**
+*
+*
+*		Shapes
+*
+*/
+.circle { border-radius: 50% }
+
+
+/**
+*
+*
+*		Miscellaneous
+*
+*/
+.clickable { cursor: pointer; }

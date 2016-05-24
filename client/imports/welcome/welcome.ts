@@ -1,3 +1,4 @@
+import {Meteor} from 'meteor/meteor';
 import {Component} from '@angular/core';
 import {MeteorComponent} from 'angular2-meteor';
 import {FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
@@ -8,11 +9,10 @@ import {InjectUser} from 'angular2-meteor-accounts-ui';
 	selector: 'Welcome',
 	templateUrl: 'client/imports/welcome/welcome.html'
 })
-@InjectUser()
+@InjectUser('user')
 export class Welcome extends MeteorComponent {
 	user: Meteor.User;
-	profile: Person;
-	personalProfileForm: ControlGroup;
+	form: ControlGroup;
 	nameHasValue: boolean;
 	profileSaved: boolean;
 	profileExisted: boolean;
@@ -21,39 +21,28 @@ export class Welcome extends MeteorComponent {
 		super();
 		let fb = new FormBuilder();
 
-		this.personalProfileForm = fb.group({
+		this.form = fb.group({
 			name: ['']
 		});
 
-		this.personalProfileForm.valueChanges.subscribe(data => {
+		this.form.valueChanges.subscribe(data => {
 			this.nameHasValue = (data.name != '')
 		});
 
-		this.subscribe('profiles', () => {
-			this.profile = Profiles.findOne({ user: this.user._id });
+		this.subscribe('users', () => {
 			
-			if (this.profile) {
-				this.personalProfileForm.controls['name'].updateValue(this.profile.name);
-				this.profileExisted = true;
-			}
+			
 
 		}, true)
 	}
 
 	saveProfile(profile) {
 		this.profileSaved = true;
-		if (this.profile) {
-			Profiles.update(this.profile._id, {
-				$set: {
-					name: profile.name,
-				}
-			})
-		} else {
-			Profiles.insert({
+		Meteor.users.update(this.user._id, {
+			$set: {
 				name: profile.name,
-				user: this.user._id
-			})
-		}
+			}	
+		})
 	}
 
 	showAcitivityIndicator() {

@@ -1,11 +1,24 @@
 import {Meteor} from 'meteor/meteor';
-import {Profiles} from '../collections/profiles';
+import {TeamMembers} from '../collections/team-members';
 
-Meteor.publish('profiles', function() {
-	return Profiles.find();
+function buildQuery(teamId?: string) {
+	var query = {};
+
+	if (teamId) {
+		// If team ID is provided, pull only users that is in th team
+		var members = TeamMembers.find({ teamId: teamId });
+		var userIds = members.map(function(p) { return p.userId })
+		query = { _id: { $in: userIds } }
+	}
+
+	return query
+}
+
+Meteor.publish('users', function(teamId?: string) {
+	return Meteor.users.find(buildQuery.call(this, teamId));
 })
 
-Profiles.allow({
+Meteor.users.allow({
 	insert: function() {
 		return true;
 	},
