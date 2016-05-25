@@ -1,29 +1,53 @@
 import {Meteor} from 'meteor/meteor';
 import {MeteorComponent} from 'angular2-meteor';
-import {Directive} from '@angular/core';
-import {makeDecorator} from '@angular/core/src/util/decorators';
-import {ComponentInstruction, Router} from '@angular/router-deprecated';
-import {InjectUser} from 'angular2-meteor-accounts-ui';
+import {RouterOutlet, Router} from '@angular/router-deprecated';
+import {Directive, TypeDecorator} from '@angular/core';
 
-@Directive({
-	selector: '[protected]'
-})
 export class Auth {
-	redirectRoute: any[];
 
-	constructor(private router: Router) {
-		this.redirectRoute = ['/Login'];
+	constructor(private redirectRoute: any[]) {
 
+	}
+
+	check(router: Router) {
 		let user = Meteor.user();
 
 		if (!!user) {
-			console.log('logged-in')
+
 		} else {
-			this.router.navigate(this.redirectRoute);
+			router.navigate(this.redirectRoute);
 		}
 	}
 
-	ngOnDestroy() {
-
-	}
 }
+
+class InjectGuardAnnotation {
+	constructor(public propName: string = 'auth') { }
+}
+
+export function InjectGuard(propName: string = 'auth', redirectRoute: any[] = ['/Login']) : (cls: any) => any {
+	var annInstance = new InjectGuardAnnotation(propName);
+	var TypeDecorator: TypeDecorator = <TypeDecorator>function TypeDecorator(cls) {
+		var propName = annInstance.propName;
+		var fieldName = `_${propName}`;
+		var injected = `${fieldName}Injected`;
+		Object.defineProperty(cls.prototype, propName, {
+			get: function() {
+				if (!this[injected]) {
+					this[fieldName] = new Auth(redirectRoute);
+					if (this.autorun) {
+						this.autorun(() => {
+							this[fieldName] = new Auth(redirectRoute);
+						}, true);
+					}
+					this[injected] = true;
+				}
+				return this[fieldName];
+			},
+			enumerable: true,
+			configurable: false
+		});
+		return cls;
+	};
+	return TypeDecorator;
+};

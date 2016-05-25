@@ -16,8 +16,7 @@ import {LoginForm} 			from './imports/auth/login-form';
 
 // Routing
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, Router, RouteConfig, CanActivate, RouterLink, ComponentInstruction} from '@angular/router-deprecated';
-import {Auth} from '../services/authentication.ts'
-
+import {InjectGuard, Auth} from '../services/authentication';
 
 @Component({
 	selector: 'app',
@@ -31,12 +30,19 @@ import {Auth} from '../services/authentication.ts'
 	{ path: '/add-team/...', as: 'AddTeam', component: TeamForm },
 	{ path: '/team/:teamId', as: 'ViewTeam', component: MembersList },
 ])
-class App {}
+@InjectGuard()
+class App {
+	auth: Auth;
+
+	constructor(router: Router) {
+		this.auth.check(router);
+	}
+}
 
 @Component({
 	selector: 'root',
 	template: '<router-outlet [protected]></router-outlet>',
-	directives: [ROUTER_DIRECTIVES, Auth]
+	directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
 	{ path: '/login', as: 'Login', component: LoginForm, useAsDefault: true },

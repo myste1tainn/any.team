@@ -4,6 +4,7 @@ import {MeteorComponent} from 'angular2-meteor';
 import {FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
 import {Profiles} from '../../../collections/profiles';
 import {InjectUser} from 'angular2-meteor-accounts-ui';
+import {Router} from '@angular/router-deprecated';
 
 @Component({
 	selector: 'Welcome',
@@ -14,11 +15,10 @@ export class Welcome extends MeteorComponent {
 	user: Meteor.User;
 	form: ControlGroup;
 	nameHasValue: boolean;
-	profileSaved: boolean;
-	profileExisted: boolean;
 
-	constructor() {
+	constructor(private router: Router) {
 		super();
+
 		let fb = new FormBuilder();
 
 		this.form = fb.group({
@@ -30,17 +30,14 @@ export class Welcome extends MeteorComponent {
 		});
 
 		this.subscribe('users', () => {
-			
-			
 
 		}, true)
 	}
 
-	saveProfile(profile) {
-		this.profileSaved = true;
+	saveProfile(form) {
 		Meteor.users.update(this.user._id, {
 			$set: {
-				name: profile.name,
+				name: form.name,
 			}
 		})
 	}
