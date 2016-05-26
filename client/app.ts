@@ -25,7 +25,6 @@ import {InjectGuard, Auth} from '../services/authentication';
 })
 @RouteConfig([
 	{ path: '/dashboard', as: 'Dashboard', component: Dashboard, useAsDefault: true },
-	{ path: '/welcome', as: 'Welcome', component: Welcome },
 	{ path: '/my-teams/...', as: 'MyTeam', component: MyTeamComponent },
 	{ path: '/add-team/...', as: 'AddTeam', component: TeamForm },
 	{ path: '/team/:teamId', as: 'ViewTeam', component: MembersList },
@@ -46,6 +45,7 @@ class App {
 })
 @RouteConfig([
 	{ path: '/login', as: 'Login', component: LoginForm, useAsDefault: true },
+	{ path: '/welcome', as: 'Welcome', component: Welcome },
 	{ path: '/...', as: 'App', component: App }
 ])
 class AnyTeam {}

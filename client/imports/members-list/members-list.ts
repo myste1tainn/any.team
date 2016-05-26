@@ -6,7 +6,6 @@ import {Component} 				from '@angular/core';
 import {MemberInvite}	 		from '../member-invite/member-invite';
 import {Teams} 					from '../../../collections/teams';
 import {TeamMembers}			from '../../../collections/team-members';
-import {Profiles}				from '../../../collections/profiles';
 
 import {InjectUser, RequireUser} 			from 'angular2-meteor-accounts-ui'
 import {RouteParams, RouteConfig} 			from '@angular/router-deprecated';

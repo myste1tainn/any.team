@@ -40,7 +40,7 @@
 	color: #DDDDDD;
 }*/
 
-button {
+button:not(.fa) {
 	/* Accent 1 color */
 	padding-top: 		5px;
 	padding-bottom: 	5px;
@@ -50,11 +50,11 @@ button {
 	background-color: #E87D2B;
 	transition: 0.2s all ease;
 }
-button:hover {
+button:hover:not(.fa) {
 	background-color: #F89D4B;
 }
 
-button.selected {
+button.selected:not(.fa) {
 	color: #E87D2B;
 	background-color: #FFF;
 }

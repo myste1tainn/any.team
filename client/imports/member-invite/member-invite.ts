@@ -2,7 +2,6 @@ import 'reflect-metadata';
 import {Meteor} 				from 'meteor/meteor';
 import {Component} 				from '@angular/core';
 import {MeteorComponent} 		from 'angular2-meteor';
-import {Profiles} 				from '../../../collections/profiles';
 import {TeamMembers} 			from '../../../collections/team-members';
 import {RouteParams} 			from '@angular/router-deprecated';
 import {InjectUser}		 		from 'angular2-meteor-accounts-ui';
