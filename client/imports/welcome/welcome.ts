@@ -18,7 +18,7 @@ export class Welcome extends MeteorComponent {
 	form: ControlGroup;
 	nameHasValue: boolean;
 	redirect: (boolean) => void;
-	auth: Auth
+	auth: Auth;
 
 	constructor(private router: Router) {
 		super();

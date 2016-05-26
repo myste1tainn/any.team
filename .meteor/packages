@@ -21,3 +21,5 @@ barbatus:angular2-runtime
 twbs:bootstrap
 accounts-password
 fortawesome:fontawesome
+angularjs:angular-animate
+email

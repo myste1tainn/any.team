@@ -1,3 +1,21 @@
+.ng-animate {
+	-webkit-transition: all ease-in-out 0.5s;
+	transition: all ease-in-out 0.5s;
+}
+
+.ng-animate.fast {
+	-webkit-transition: all ease-in-out 0.2s;
+	transition: all ease-in-out 0.2s;
+}
+
+.fade-in.ng-enter {
+	opacity: 0;
+}
+
+.fade-in.ng-enter-active {
+	opacity: 1;
+}
+
 /**
 *
 *

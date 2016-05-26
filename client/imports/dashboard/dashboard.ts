@@ -9,7 +9,8 @@ import {InjectGuard, Auth} from '../../../services/authentication';
 @Component({
 	selector: 'dashboard',
 	templateUrl: 'client/imports/dashboard/dashboard.html',
-	directives: [LoginButtons, RouterLink]
+	directives: [LoginButtons, RouterLink],
+	host: {'class': 'ng-animate fast fade-in'}
 })
 @InjectUser('user')
 @InjectGuard()
