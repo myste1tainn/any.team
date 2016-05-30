@@ -1,16 +1,11 @@
 // Meteor
 import {Meteor} from 'meteor/meteor';
 import {TeamMembers} from '../collections/team-members';
+import '../collections/methods.ts';
 
 // server
 Meteor.publish("users", function () {
-	if (this.userId) {
-		return Meteor.users.find({_id: this.userId}, {
-			fields: { 'profile': 1, 'name': 1, 'createdAt': 1, 'services': 1 }
-		});
-	} else {
-		this.ready();
-	}
+	return Meteor.users.find();
 });
 
 function buildQuery(teamId?: string) {
@@ -24,18 +19,14 @@ function buildQuery(teamId?: string) {
 	return query
 }
 
-// Meteor.publish('users', function(teamId?: string) {
-// 	return Meteor.users.find(buildQuery.call(this, teamId));
-// })
-
-// Meteor.users.allow({
-// 	insert: function() {
-// 		return true;
-// 	},
-// 	update: function() {
-// 		return true;
-// 	},
-// 	remove: function() {
-// 		return true;
-// 	}
-// })
+Meteor.users.allow({
+	insert: function() {
+		return true;
+	},
+	update: function() {
+		return true;
+	},
+	remove: function() {
+		return true;
+	}
+})
