@@ -17,8 +17,7 @@
 		</div>
 		<div class="std-pad full-width">
 			<input class="full-width small-pad"
-				   ngControl="password"
-				   type="password" name="password" placeholder="Password">
+				   ngControl="password" placeholder="Password">
 		</div>
 		<div class="col-xs-12 std-pad-lr small-pad-bottom std-pad-top">
 			<div class="col-xs-6">
@@ -38,7 +37,10 @@
 		</div>
 		<div class="col-xs-12 std-pad-lr">
 			<div class="col-xs-6">
-				<button class="col-xs-12 border">Facebook</button>
+				<button class="col-xs-12 border"
+						(click)="loginWithFB()">
+					Facebook
+				</button>
 			</div>
 			<div class="col-xs-6">
 				<button class="col-xs-12 border">Google+</button>

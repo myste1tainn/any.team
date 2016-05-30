@@ -87,6 +87,18 @@ export class LoginForm {
 			this.doAuthCheck();
 		});
 	}
+
+	loginWithFB() {
+		Meteor.loginWithFacebook((ex) => {
+			if (ex) {
+				this.errorMessage = 'Failed to login with Facebook, please try again';
+				this.application.tick();
+			} else {
+				this.doAuthCheck();
+			}
+		})
+	}
+
 	signup() {
 		let email = this.form.value.email;
 		let password = this.form.value.password;

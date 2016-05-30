@@ -46,6 +46,8 @@ export class Auth {
 		let user = Meteor.user();
 		let authenticated = !!user;
 
+		console.log(user);
+
 		callback(authenticated);
 	}
 

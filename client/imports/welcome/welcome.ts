@@ -39,6 +39,7 @@ export class Welcome extends MeteorComponent {
 			// If it is declared as public method then
 			// `this` within the function won't work as it is used as callback
 			this.redirect = (ok: boolean) => {
+
 				if (ok) {
 
 					// If user already has name, go to dashboard, otherwise welcome them
