@@ -1,0 +1,11 @@
+<div class="col-xs-12 std-pad container-flex flex-center" *ngIf="userLoaded()">
+	<img src="{{user.profile.picture}}" class="circle col-xs-4">	
+	<div class="col-xs-8">
+		<div class="col-xs-12 no-pad std-pad-bottom">{{user.profile.name}}</div>
+		<button class="fa fa-pencil small-pad circle bg-color-accent-1 color-tertiary pull-left">
+		</button>
+		<button class="fa fa-unlock small-pad circle bg-color-accent-1 color-tertiary pull-left" 
+			(click)="logout()">
+		</button>
+	</div>	
+</div>

@@ -1,10 +1,15 @@
+// Core
 import {Meteor}					from 'meteor/meteor';
 import {MeteorComponent} 		from 'angular2-meteor';
 import {Mongo}					from 'meteor/mongo';
 import {Component, Inject}		from '@angular/core';
-import {ApplicationRef} 		from '@angular/core';
+import {ApplicationRef, NgZone}	from '@angular/core';
 import {Accounts}				from 'meteor/accounts-base';
 
+// APIs
+import '../../apis/facebook';
+
+// Other
 import {Router} from '@angular/router-deprecated';		
 import {FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
 import {InjectUser}	from 'angular2-meteor-accounts-ui';
@@ -30,23 +35,26 @@ export class LoginForm {
 
 	constructor(
 		private application: ApplicationRef,
-		private router: Router) {
+		private router: Router,
+		private zone: NgZone) {
 
 		// This needs to be declare here.
 		// If it is declared as public method then
 		// `this` within the function won't work as it is used as callback
 		this.redirect = (ok: boolean) => {
-			if (ok) {
+			this.zone.run(() => {
+				if (ok) {
 
-				// If user already has name, go to dashboard, otherwise welcome them
-				let user = Meteor.user();
-				if (!!user.name) {
-					this.router.navigate(['/App/Dashboard']);
-				} else {
-					this.router.navigate(['/Welcome']);
+					// If user already has name, go to dashboard, otherwise welcome them
+					let user = Meteor.user();
+					if (!!user.name) {
+						this.router.navigate(['/App/Dashboard']);
+					} else {
+						this.router.navigate(['/Welcome']);
+					}
+
 				}
-
-			}
+			})
 		}
 
 		this.doAuthCheck();
@@ -89,7 +97,9 @@ export class LoginForm {
 	}
 
 	loginWithFB() {
-		Meteor.loginWithFacebook((ex) => {
+		Meteor.loginWithFacebook(
+		{ requestPermissions: ['user_friends', 'public_profile', 'email'] },
+		(ex) => {
 			if (ex) {
 				this.errorMessage = 'Failed to login with Facebook, please try again';
 				this.application.tick();

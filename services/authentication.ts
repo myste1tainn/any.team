@@ -1,7 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import {MeteorComponent} from 'angular2-meteor';
 import {RouterOutlet, Router} from '@angular/router-deprecated';
-import {Directive, TypeDecorator} from '@angular/core';
+import {Directive, TypeDecorator, NgZone} from '@angular/core';
 
 export class Auth {
 
@@ -45,8 +45,6 @@ export class Auth {
 	checkWithCallback(callback: (ok: boolean) => void) {
 		let user = Meteor.user();
 		let authenticated = !!user;
-
-		console.log(user);
 
 		callback(authenticated);
 	}

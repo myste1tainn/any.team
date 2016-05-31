@@ -13,6 +13,7 @@ import {MyTeamComponent}	from './imports/my-team/my-team';
 import {TeamForm}			from './imports/team-form/team-form';
 import {MembersList} 		from './imports/members-list/members-list';
 import {LoginForm} 			from './imports/auth/login-form';
+import {UserCard} 			from './imports/user-card/user-card';
 
 // Routing
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, Router, RouteConfig, CanActivate, RouterLink, ComponentInstruction} from '@angular/router-deprecated';
@@ -21,7 +22,7 @@ import {InjectGuard, Auth} from '../services/authentication';
 @Component({
 	selector: 'app',
 	templateUrl: 'client/app.html',
-	directives: [Sidebar, NewsFeed, ROUTER_DIRECTIVES, RouterLink]
+	directives: [Sidebar, NewsFeed, ROUTER_DIRECTIVES, RouterLink, UserCard]
 })
 @RouteConfig([
 	{ path: '/dashboard', as: 'Dashboard', component: Dashboard, useAsDefault: true },
