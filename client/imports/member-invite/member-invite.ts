@@ -1,28 +1,28 @@
 import 'reflect-metadata';
-import {Meteor} 				from 'meteor/meteor';
-import {Component} 				from '@angular/core';
-import {MeteorComponent} 		from 'angular2-meteor';
-import {TeamMembers} 			from '../../../collections/team-members';
-import {RouteParams} 			from '@angular/router-deprecated';
-import {InjectUser}		 		from 'angular2-meteor-accounts-ui';
-
-import {FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
-
-
-// Collections
 import '../../../collections/methods.ts';
+import {Meteor} 							from 'meteor/meteor';
+import {Component, ElementRef, ViewChild} 	from '@angular/core';
+import {MeteorComponent} 					from 'angular2-meteor';
+import {TeamMembers} 						from '../../../collections/team-members';
+import {RouteParams} 						from '@angular/router-deprecated';
+import {InjectUser}		 					from 'angular2-meteor-accounts-ui';
+import {FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
 
 @Component({
 	selector: 'member-invite',
 	templateUrl: 'client/imports/member-invite/member-invite.html',
+	// queries: {
+	// 	emailInput: ViewChild('emailInput')
+	// }
 })
-
 @InjectUser('user')
 export class MemberInvite extends MeteorComponent {
 	form: ControlGroup;
 	user: Meteor.User;
 	teamId: string;
-	showDialog: boolean
+	showDialog: boolean;
+
+	@ViewChild('emailInput') emailInput;
 
 	constructor(private routeParams: RouteParams) {
 		super();
@@ -33,11 +33,18 @@ export class MemberInvite extends MeteorComponent {
 		});
 
 		this.teamId = routeParams.get('teamId');
-
 	}
 
 	toggleShowDialog() {
+		var _focusInput = () => {
+			this.emailInput.nativeElement.focus();
+		}
+
 		this.showDialog = !this.showDialog;
+
+		setTimeout(function() {
+			_focusInput();
+		}, 200);
 	}
 
 	invite(form) {
