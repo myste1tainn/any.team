@@ -59,12 +59,13 @@ export class TeamForm extends MeteorComponent {
 			let id = Teams.insert({
 				_id: this.normalizeString(team.name),
 				name: team.name,
-				owner: this.user._id
+				owner: this.user._id,
+				invited: []
 			})
 			this.team = Teams.find({_id:id});
 
 			// Go to child state member list to see all members and add them.
-			this.router.navigate(['/ViewTeam', {teamId: id}]);
+			this.router.navigate(['/App/ViewTeam', {teamId: id}]);
 		}, true);
 	}
 

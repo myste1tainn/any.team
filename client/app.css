@@ -5,6 +5,10 @@ html, body, body * {
 button {
 	background-color: transparent;
 	color: #303030;
+	font-weight: 100;
+	font-size: 0.8em;
+	letter-spacing: 1px;
+	margin: 2px;
 }
 
 input {

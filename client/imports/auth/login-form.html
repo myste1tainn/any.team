@@ -1,0 +1,55 @@
+<div class="container-flex center full-height">
+	<form class="col-lg-4 col-md-5 col-sm-6 col-xs-12"
+		  [ngFormModel]="form" #f="ngForm">
+
+		<h1 class="std-pad margin-bottom">
+			Any.<strong class="color-accent-1">Team</strong>
+		</h1>
+
+		<p class="destructive">
+			{{ errorMessage || '&nbsp;' }}
+		</p>
+
+		<div class="std-pad full-width">
+			<input class="full-width small-pad"
+				   ngControl="email"
+				   type="email" name="email" placeholder="Email">
+		</div>
+		<div class="std-pad full-width">
+			<input class="full-width small-pad"
+				   ngControl="password" placeholder="Password">
+		</div>
+		<div class="col-xs-12 std-pad-lr small-pad-bottom std-pad-top">
+			<div class="col-xs-6">
+				<button class="col-xs-12 border" 
+						(click)="login()"
+						[ngClass]="{'selected': !isSignup}">
+					Login
+				</button>
+			</div>
+			<div class="col-xs-6">
+				<button class="col-xs-12 border" 
+						(click)="signup()"
+						[ngClass]="{'selected': isSignup}">
+					Signup
+				</button>
+			</div>
+		</div>
+		<div class="col-xs-12 std-pad-lr">
+			<div class="col-xs-6">
+				<button class="col-xs-12 border"
+						(click)="loginWithFB()">
+					Facebook
+				</button>
+			</div>
+			<div class="col-xs-6">
+				<button class="col-xs-12 border">Google+</button>
+			</div>
+		</div>
+		<div class="col-xs-12 std-pad">
+			<button>Forgot password?</button>
+		</div>
+
+		<br/><br/>
+	</form>
+</div>
