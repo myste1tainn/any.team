@@ -5,14 +5,16 @@ import {MeteorComponent} 		from 'angular2-meteor';
 import {TeamMembers} 			from '../../../collections/team-members';
 import {RouteParams} 			from '@angular/router-deprecated';
 import {InjectUser}		 		from 'angular2-meteor-accounts-ui';
+
 import {FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
+
 
 // Collections
 import '../../../collections/methods.ts';
 
 @Component({
 	selector: 'member-invite',
-	templateUrl: 'client/imports/member-invite/member-invite.html'
+	templateUrl: 'client/imports/member-invite/member-invite.html',
 })
 
 @InjectUser('user')

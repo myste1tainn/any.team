@@ -21,13 +21,10 @@ export class UserCard extends MeteorComponent {
 	constructor(private router: Router) {
 		super();
 
-		console.log(this.user);
-
 		this.getProfilePicture();
 	}
 
 	userLoaded() {
-		console.log('check user', !!this.user);
 		return !!this.user
 	}
 

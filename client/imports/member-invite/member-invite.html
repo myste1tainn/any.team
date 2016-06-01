@@ -7,7 +7,7 @@
 		<form [ngFormModel]="form"
 			  #f="ngForm"
 			  (submit)="invite(f.value)">
-			<input type="email" ngControl="email">
+			<input type="email" [my-directive] ngControl="email">
 			<button>Invite</button>
 		</form>
 	</div>
