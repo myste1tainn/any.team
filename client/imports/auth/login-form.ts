@@ -109,6 +109,18 @@ export class LoginForm {
 		})
 	}
 
+	loginWithGoogle() {
+		Meteor.loginWithGoogle({}, (ex) => {
+			if (ex) {
+				console.log(ex);
+				this.errorMessage = 'Failed to login with Google+, please try again';
+				this.application.tick();
+			} else {
+				this.doAuthCheck();
+			}
+		})
+	}
+
 	signup() {
 		let email = this.form.value.email;
 		let password = this.form.value.password;
